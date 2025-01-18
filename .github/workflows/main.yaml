@@ -22,7 +22,7 @@ jobs:
     - name: Test Coverage (pkg)
       run: go test ./... -coverprofile=${{ steps.vars.outputs.coverage_txt }}
     - name: Upload coverage
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v5
       with:
         files: ${{ steps.vars.outputs.coverage_txt }}
     - name: Run GoReleaser
