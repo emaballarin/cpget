@@ -11,7 +11,7 @@ require (
 	github.com/mholt/archiver v3.1.1+incompatible
 	github.com/pkg/errors v0.8.1-0.20161002052512-839d9e913e06
 	github.com/stretchr/testify v1.6.1
-	golang.org/x/sync v0.0.0-20161004233620-1ae7c7b29e06
+	golang.org/x/sync v0.10.0
 )
 
 require (
@@ -32,7 +32,6 @@ require (
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/ulikunitz/xz v0.5.8 // indirect
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 // indirect
-	golang.org/x/net v0.0.0-20161013035702-8b4af36cd21a // indirect
 	golang.org/x/sys v0.0.0-20210403161142-5e06dd20ab57 // indirect
 	golang.org/x/term v0.0.0-20210317153231-de623e64d2a6 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
