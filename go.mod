@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/Code-Hex/updater v0.0.0-20160712085121-c3f278672520
-	github.com/Songmu/prompter v0.5.0
+	github.com/Songmu/prompter v0.5.1
 	github.com/asaskevich/govalidator v0.0.0-20161001163130-7b3beb6df3c4
 	github.com/cheggaaa/pb/v3 v3.1.5
 	github.com/jessevdk/go-flags v1.6.1
@@ -33,6 +33,6 @@ require (
 	github.com/ulikunitz/xz v0.5.8 // indirect
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 // indirect
 	golang.org/x/sys v0.29.0 // indirect
-	golang.org/x/term v0.0.0-20210317153231-de623e64d2a6 // indirect
+	golang.org/x/term v0.0.0-20220526004731-065cf7ba2467 // indirect
 	gopkg.in/yaml.v3 v3.0.0 // indirect
 )
