@@ -1,4 +1,4 @@
-package pget
+package cpget
 
 import (
 	"bytes"
@@ -54,7 +54,7 @@ func TestRunResume(t *testing.T) {
 
 	p := New()
 	if err := p.Run(context.Background(), version, []string{
-		"pget",
+		"cpget",
 		"-p",
 		"3",
 		targetURL,

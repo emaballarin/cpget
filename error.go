@@ -1,4 +1,4 @@
-package pget
+package cpget
 
 import "github.com/pkg/errors"
 

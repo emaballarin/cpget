@@ -1,4 +1,4 @@
-package pget
+package cpget
 
 import (
 	"bufio"
@@ -15,8 +15,8 @@ import (
 	"github.com/pkg/errors"
 )
 
-// Pget structs
-type Pget struct {
+// CPget structs
+type CPget struct {
 	Trace  bool
 	Output string
 	Procs  int
@@ -28,18 +28,18 @@ type Pget struct {
 	referer   string
 }
 
-// New for pget package
-func New() *Pget {
-	return &Pget{
+// New for cpget package
+func New() *CPget {
+	return &CPget{
 		Trace:   false,
 		Procs:   runtime.NumCPU(), // default
 		timeout: 10,
 	}
 }
 
-// Run execute methods in pget package
-func (pget *Pget) Run(ctx context.Context, version string, args []string) error {
-	if err := pget.Ready(version, args); err != nil {
+// Run execute methods in cpget package
+func (cpget *CPget) Run(ctx context.Context, version string, args []string) error {
+	if err := cpget.Ready(version, args); err != nil {
 		return errTop(err)
 	}
 
@@ -47,8 +47,8 @@ func (pget *Pget) Run(ctx context.Context, version string, args []string) error 
 	client := newDownloadClient(16)
 
 	target, err := Check(ctx, &CheckConfig{
-		URLs:    pget.URLs,
-		Timeout: time.Duration(pget.timeout) * time.Second,
+		URLs:    cpget.URLs,
+		Timeout: time.Duration(cpget.timeout) * time.Second,
 		Client:  client,
 	})
 	if err != nil {
@@ -58,12 +58,12 @@ func (pget *Pget) Run(ctx context.Context, version string, args []string) error 
 	filename := target.Filename
 
 	var dir string
-	if pget.Output != "" {
-		fi, err := os.Stat(pget.Output)
+	if cpget.Output != "" {
+		fi, err := os.Stat(cpget.Output)
 		if err == nil && fi.IsDir() {
-			dir = pget.Output
+			dir = cpget.Output
 		} else {
-			dir, filename = filepath.Split(pget.Output)
+			dir, filename = filepath.Split(cpget.Output)
 			if dir != "" {
 				if err := os.MkdirAll(dir, 0755); err != nil {
 					return errors.Wrapf(err, "failed to create diretory at %s", dir)
@@ -73,15 +73,15 @@ func (pget *Pget) Run(ctx context.Context, version string, args []string) error 
 	}
 
 	opts := []DownloadOption{
-		WithUserAgent(pget.useragent, version),
-		WithReferer(pget.referer),
+		WithUserAgent(cpget.useragent, version),
+		WithReferer(cpget.referer),
 	}
 
 	return Download(ctx, &DownloadConfig{
 		Filename:      filename,
 		Dirname:       dir,
 		ContentLength: target.ContentLength,
-		Procs:         pget.Procs,
+		Procs:         cpget.Procs,
 		URLs:          target.URLs,
 		Client:        client,
 	}, opts...)
@@ -91,27 +91,27 @@ const (
 	warningNumConnection = 4
 	warningMessage       = "[WARNING] Using a large number of connections to 1 URL can lead to DOS attacks.\n" +
 		"In most cases, `4` or less is enough. In addition, the case is increasing that if you use multiple connections to 1 URL does not increase the download speed with the spread of CDNs.\n" +
-		"See: https://github.com/Code-Hex/pget#disclaimer\n" +
+		"See: https://github.com/emaballarin/cpget#disclaimer\n" +
 		"\n" +
 		"Would you execute knowing these?\n"
 )
 
 // Ready method define the variables required to Download.
-func (pget *Pget) Ready(version string, args []string) error {
-	opts, err := pget.parseOptions(args, version)
+func (cpget *CPget) Ready(version string, args []string) error {
+	opts, err := cpget.parseOptions(args, version)
 	if err != nil {
 		return errors.Wrap(errTop(err), "failed to parse command line args")
 	}
 
 	if opts.Trace {
-		pget.Trace = opts.Trace
+		cpget.Trace = opts.Trace
 	}
 
 	if opts.Timeout > 0 {
-		pget.timeout = opts.Timeout
+		cpget.timeout = opts.Timeout
 	}
 
-	if err := pget.parseURLs(); err != nil {
+	if err := cpget.parseURLs(); err != nil {
 		return errors.Wrap(err, "failed to parse of url")
 	}
 
@@ -119,24 +119,24 @@ func (pget *Pget) Ready(version string, args []string) error {
 		return makeIgnoreErr()
 	}
 
-	pget.Procs = opts.NumConnection * len(pget.URLs)
+	cpget.Procs = opts.NumConnection * len(cpget.URLs)
 
 	if opts.Output != "" {
-		pget.Output = opts.Output
+		cpget.Output = opts.Output
 	}
 
 	if opts.UserAgent != "" {
-		pget.useragent = opts.UserAgent
+		cpget.useragent = opts.UserAgent
 	}
 
 	if opts.Referer != "" {
-		pget.referer = opts.Referer
+		cpget.referer = opts.Referer
 	}
 
 	return nil
 }
 
-func (pget *Pget) parseOptions(argv []string, version string) (*Options, error) {
+func (cpget *CPget) parseOptions(argv []string, version string) (*Options, error) {
 	var opts Options
 	if len(argv) == 0 {
 		stdout.Write(opts.usage(version))
@@ -163,21 +163,21 @@ func (pget *Pget) parseOptions(argv []string, version string) (*Options, error) 
 		return nil, makeIgnoreErr()
 	}
 
-	pget.args = o
+	cpget.args = o
 
 	return &opts, nil
 }
 
-func (pget *Pget) parseURLs() error {
+func (cpget *CPget) parseURLs() error {
 
 	// find url in args
-	for _, argv := range pget.args {
+	for _, argv := range cpget.args {
 		if govalidator.IsURL(argv) {
-			pget.URLs = append(pget.URLs, argv)
+			cpget.URLs = append(cpget.URLs, argv)
 		}
 	}
 
-	if len(pget.URLs) < 1 {
+	if len(cpget.URLs) < 1 {
 		fmt.Fprintf(stdout, "Please input url separate with space or newline\n")
 		fmt.Fprintf(stdout, "Start download with ^D\n")
 
@@ -188,7 +188,7 @@ func (pget *Pget) parseURLs() error {
 			urls := strings.Split(scan, " ")
 			for _, url := range urls {
 				if govalidator.IsURL(url) {
-					pget.URLs = append(pget.URLs, url)
+					cpget.URLs = append(cpget.URLs, url)
 				}
 			}
 		}
@@ -197,7 +197,7 @@ func (pget *Pget) parseURLs() error {
 			return errors.Wrap(err, "failed to parse url from stdin")
 		}
 
-		if len(pget.URLs) < 1 {
+		if len(cpget.URLs) < 1 {
 			return errors.New("urls not found in the arguments passed")
 		}
 	}

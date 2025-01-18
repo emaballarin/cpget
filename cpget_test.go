@@ -1,4 +1,4 @@
-package pget
+package cpget
 
 import (
 	"bytes"
@@ -22,7 +22,7 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
-func TestPget(t *testing.T) {
+func TestCPget(t *testing.T) {
 	// listening file server
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

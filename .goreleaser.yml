@@ -1,7 +1,7 @@
 builds:
-  - id: pget
-    main: ./cmd/pget/main.go
-    binary: pget
+  - id: cpget
+    main: ./cmd/cpget/main.go
+    binary: cpget
     env:
       - CGO_ENABLED=0
     ldflags: -s -w -X main.version={{.Version}}
@@ -28,39 +28,39 @@ builds:
         goarm: "7"
 
 archives:
-- builds:
-  - pget
-  name_template: >-
-    pget_
-    {{ .Version }}_
-    {{- if eq .Os "darwin" }}macOS
-    {{- else if eq .Os "linux" }}Linux
-    {{- else if eq .Os "windows" }}Windows
-    {{- else }}{{ title .Os }}{{ end }}_
-    {{- if eq .Arch "amd64" }}x86_64
-    {{- else if eq .Arch "386" }}i386
-    {{- else }}{{ .Arch }}{{ end }}
-  format_overrides:
-  - goos: windows
-    format: zip
-  files:
-  - LICENSE
+  - builds:
+      - cpget
+    name_template: >-
+      cpget_
+      {{ .Version }}_
+      {{- if eq .Os "darwin" }}macOS
+      {{- else if eq .Os "linux" }}Linux
+      {{- else if eq .Os "windows" }}Windows
+      {{- else }}{{ title .Os }}{{ end }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - LICENSE
 
 brews:
-- name: pget
-  repository:
-    owner: Code-Hex
-    name: homebrew-tap
-    token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
-  homepage: https://github.com/Code-Hex/pget
-  description: The fastest file download client
-  folder: Formula
-  install: |
-    bin.install "pget"
+  - name: cpget
+    repository:
+      owner: emaballarin
+      name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+    homepage: https://github.com/emaballarin/cpget
+    description: The fastest file download client
+    folder: Formula
+    install: |
+      bin.install "cpget"
 nfpms:
   - license: MIT License
-    maintainer: Kei Kamikawa <x00.x7f.x86@gmail.com>
-    homepage: https://github.com/Code-Hex/pget
+    maintainer: Emanuele Ballarin <emanuele@ballarin.cc>
+    homepage: https://github.com/emaballarin/cpget
     bindir: /usr/local/bin
     description: The fastest file download client
     formats:
@@ -69,13 +69,13 @@ nfpms:
       - rpm
 
 checksum:
-  name_template: 'pget_checksums.txt'
+  name_template: "cpget_checksums.txt"
 
 changelog:
   sort: asc
   filters:
     exclude:
-    - '^docs:'
-    - '^test:'
-    - Merge pull request
-    - Merge branch
+      - "^docs:"
+      - "^test:"
+      - Merge pull request
+      - Merge branch

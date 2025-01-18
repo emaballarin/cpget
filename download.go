@@ -1,4 +1,4 @@
-package pget
+package cpget
 
 import (
 	"context"
@@ -126,7 +126,7 @@ type DownloadOption func(c *DownloadConfig)
 func WithUserAgent(ua, version string) DownloadOption {
 	return func(c *DownloadConfig) {
 		if ua == "" {
-			ua = "Pget/" + version
+			ua = "CPget/" + version
 		}
 		c.makeRequestOption.useragent = ua
 	}

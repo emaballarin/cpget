@@ -1,4 +1,4 @@
-package pget
+package cpget
 
 import (
 	"testing"
@@ -18,7 +18,7 @@ func TestParts_of_ready(t *testing.T) {
 		{
 			name: "one URL",
 			args: []string{
-				"pget",
+				"cpget",
 				"-p",
 				"2",
 				"http://example.com/filename.tar.gz",
@@ -32,7 +32,7 @@ func TestParts_of_ready(t *testing.T) {
 		{
 			name: "two URLs",
 			args: []string{
-				"pget",
+				"cpget",
 				"-p",
 				"2",
 				"http://example.com/filename.tar.gz",
@@ -65,7 +65,7 @@ func TestParts_of_ready(t *testing.T) {
 
 func TestShowhelp(t *testing.T) {
 	args := []string{
-		"pget",
+		"cpget",
 		"-h",
 	}
 
@@ -74,7 +74,7 @@ func TestShowhelp(t *testing.T) {
 	assert.NotNil(t, err)
 
 	args = []string{
-		"pget",
+		"cpget",
 		"--help",
 	}
 
@@ -85,7 +85,7 @@ func TestShowhelp(t *testing.T) {
 
 func TestShowisupdate(t *testing.T) {
 	args := []string{
-		"pget",
+		"cpget",
 		"--check-update",
 	}
 

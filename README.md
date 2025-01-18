@@ -1,10 +1,10 @@
-Pget - The fastest file download client
+CPget - The fastest file download client
 =======
 
-[![.github/workflows/main.yaml](https://github.com/Code-Hex/pget/actions/workflows/main.yaml/badge.svg)](https://github.com/Code-Hex/pget/actions/workflows/main.yaml)
-[![codecov](https://codecov.io/gh/Code-Hex/pget/branch/master/graph/badge.svg?token=jUVGnY7ZlG)](undefined)
-[![Go Report Card](https://goreportcard.com/badge/github.com/Code-Hex/pget)](https://goreportcard.com/report/github.com/Code-Hex/pget)
-[![GitHub release](https://img.shields.io/github/release/Code-Hex/pget.svg)](https://github.com/Code-Hex/pget)
+[![.github/workflows/main.yaml](https://github.com/emaballarin/cpget/actions/workflows/main.yaml/badge.svg)](https://github.com/emaballarin/cpget/actions/workflows/main.yaml)
+[![codecov](https://codecov.io/gh/emaballarin/cpget/branch/master/graph/badge.svg?token=jUVGnY7ZlG)](undefined)
+[![Go Report Card](https://goreportcard.com/badge/github.com/emaballarin/cpget)](https://goreportcard.com/report/github.com/emaballarin/cpget)
+[![GitHub release](https://img.shields.io/github/release/emaballarin/cpget.svg)](https://github.com/emaballarin/cpget)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
 **Ad**: I'm currently developing a new date and time library [synchro](https://github.com/Code-Hex/synchro) for the modern era. please give it ⭐!!
@@ -19,8 +19,7 @@ Multi-Connection Download using parallel requests.
 
 This is an example to download [linux kernel](https://www.kernel.org/). It will be finished between 15s.
 
-![pget](https://user-images.githubusercontent.com/6500104/147878414-321c57ad-cff2-40f3-b2a4-12c30ff1363f.gif)
-
+![cpget](https://user-images.githubusercontent.com/6500104/147878414-321c57ad-cff2-40f3-b2a4-12c30ff1363f.gif)
 
 ## Disclaimer
 
@@ -36,17 +35,17 @@ This program comes with no warranty. You must use this program at your own risk.
 
 ### Homebrew
 
-    $ brew install pget
+    brew install cpget
 
 ### Go
 
-    $ go install github.com/Code-Hex/pget/cmd/pget@latest
+    go install github.com/emaballarin/cpget/cmd/cpget@master
 
 ## Synopsis
 
 This example will be used 2 connections per URL.
 
-    $ pget -p 2 MIRROR1 MIRROR2 MIRROR3
+    cpget -p 2 MIRROR1 MIRROR2 MIRROR3
 
 If you have created such as this file
 
@@ -57,7 +56,7 @@ If you have created such as this file
 
 You can do this
 
-    cat list.txt | pget -p 2
+    cat list.txt | cpget -p 2
 
 ## Options
 
@@ -73,27 +72,29 @@ You can do this
   --trace                       display detail error messages
 ```
 
-## Pget vs Wget
+## CPget vs Wget
 
-URL: https://mirror.internet.asn.au/pub/ubuntu/releases/21.10/ubuntu-21.10-desktop-amd64.iso
+URL: <https://mirror.internet.asn.au/pub/ubuntu/releases/21.10/ubuntu-21.10-desktop-amd64.iso>
 
 Using
+
 ```
 time wget https://mirror.internet.asn.au/pub/ubuntu/releases/21.10/ubuntu-21.10-desktop-amd64.iso
-time pget -p 6 https://mirror.internet.asn.au/pub/ubuntu/releases/21.10/ubuntu-21.10-desktop-amd64.iso
+time cpget -p 6 https://mirror.internet.asn.au/pub/ubuntu/releases/21.10/ubuntu-21.10-desktop-amd64.iso
 ```
+
 Results
 
 ```
 wget   3.92s user 23.52s system 3% cpu 13:35.24 total
-pget -p 6   10.54s user 34.52s system 25% cpu 2:56.93 total
+cpget -p 6   10.54s user 34.52s system 25% cpu 2:56.93 total
 ```
 
-`wget` 13:35.24 total, `pget -p 6` **2:56.93 total (6x faster)**
+`wget` 13:35.24 total, `cpget -p 6` **2:56.93 total (6x faster)**
 
 ## Binary
 
-You can download from [here](https://github.com/Code-Hex/pget/releases)
+You can download from [here](https://github.com/emaballarin/cpget/releases)
 
 ## Author
 

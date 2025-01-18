@@ -1,9 +1,8 @@
-package pget
+package cpget
 
 import (
 	"bytes"
 	"fmt"
-
 	"github.com/Code-Hex/updater"
 	"github.com/jessevdk/go-flags"
 	"github.com/pkg/errors"
@@ -36,9 +35,9 @@ func (opts *Options) parse(argv []string, version string) ([]string, error) {
 func (opts Options) usage(version string) []byte {
 	buf := bytes.Buffer{}
 
-	msg := "Pget %s, The fastest file download client\n"
+	msg := "CPget %s, The fastest file download client\n"
 	fmt.Fprintf(&buf, msg+
-		`Usage: pget [options] URL
+		`Usage: cpget [options] URL
   Options:
   -h,  --help                   print usage and exit
   -p,  --procs <num>            the number of connections for a single URL (default 1)
@@ -54,7 +53,7 @@ func (opts Options) usage(version string) []byte {
 
 func (opts Options) isupdate(version string) ([]byte, error) {
 	buf := bytes.Buffer{}
-	result, err := updater.CheckWithTag("Code-Hex", "pget", version)
+	result, err := updater.CheckWithTag("emaballarin", "cpget", version)
 	if err != nil {
 		return nil, err
 	}
