@@ -32,7 +32,7 @@ require (
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/ulikunitz/xz v0.5.8 // indirect
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 // indirect
-	golang.org/x/sys v0.21.0 // indirect
+	golang.org/x/sys v0.29.0 // indirect
 	golang.org/x/term v0.0.0-20210317153231-de623e64d2a6 // indirect
-	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
+	gopkg.in/yaml.v3 v3.0.0 // indirect
 )
