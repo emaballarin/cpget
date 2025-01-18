@@ -27,7 +27,7 @@ jobs:
         files: ${{ steps.vars.outputs.coverage_txt }}
     - name: Run GoReleaser
       if: contains(github.ref, 'tags/v')
-      uses: goreleaser/goreleaser-action@v2
+      uses: goreleaser/goreleaser-action@v6
       with:
         version: latest
         args: release --clean
