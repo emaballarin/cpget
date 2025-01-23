@@ -10,14 +10,14 @@ require (
 	github.com/jessevdk/go-flags v1.6.1
 	github.com/mholt/archiver v3.1.1+incompatible
 	github.com/pkg/errors v0.9.1
-	github.com/stretchr/testify v1.6.1
+	github.com/stretchr/testify v1.10.0
 	golang.org/x/sync v0.10.0
 )
 
 require (
 	github.com/VividCortex/ewma v1.2.0 // indirect
 	github.com/antonholmquist/jason v1.0.1-0.20160829104012-962e09b85496 // indirect
-	github.com/davecgh/go-spew v1.1.0 // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dsnet/compress v0.0.1 // indirect
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/frankban/quicktest v1.11.1 // indirect
