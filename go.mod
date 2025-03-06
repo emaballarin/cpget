@@ -1,6 +1,7 @@
 module github.com/emaballarin/cpget
 
 go 1.21
+toolchain go1.23.7
 
 require (
 	github.com/Code-Hex/updater v0.0.0-20160712085121-c3f278672520
@@ -11,7 +12,7 @@ require (
 	github.com/mholt/archiver v3.1.1+incompatible
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.10.0
-	golang.org/x/sync v0.11.0
+	golang.org/x/sync v0.12.0
 )
 
 require (
