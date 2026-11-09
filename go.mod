@@ -6,7 +6,7 @@ require (
 	github.com/Code-Hex/updater v0.0.0-20160712085121-c3f278672520
 	github.com/Songmu/prompter v1.0.0
 	github.com/asaskevich/govalidator v0.0.0-20161001163130-7b3beb6df3c4
-	github.com/cheggaaa/pb/v3 v3.2.1
+	github.com/cheggaaa/pb/v3 v3.3.0
 	github.com/jessevdk/go-flags v1.6.1
 	github.com/mholt/archiver v3.1.1+incompatible
 	github.com/pkg/errors v0.9.1
@@ -22,9 +22,9 @@ require (
 	github.com/fatih/color v1.19.0 // indirect
 	github.com/frankban/quicktest v1.11.1 // indirect
 	github.com/golang/snappy v0.0.2 // indirect
-	github.com/mattn/go-colorable v0.1.15 // indirect
+	github.com/mattn/go-colorable v0.1.16 // indirect
 	github.com/mattn/go-isatty v0.0.24 // indirect
-	github.com/mattn/go-runewidth v0.0.27 // indirect
+	github.com/mattn/go-runewidth v0.0.31 // indirect
 	github.com/mcuadros/go-version v0.0.0-20141206211339-d52711f8d6be // indirect
 	github.com/nwaples/rardecode v1.1.0 // indirect
 	github.com/pierrec/lz4 v2.5.2+incompatible // indirect
